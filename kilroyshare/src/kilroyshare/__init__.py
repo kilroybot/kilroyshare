@@ -1,6 +1,6 @@
 from importlib.resources import path
-from pathlib import PurePath, Path
-from typing import Union, Tuple, ContextManager
+from pathlib import Path, PurePath
+from typing import ContextManager, Tuple, Union
 
 from kilroyshare import resources
 #
@@ -20,11 +20,14 @@ def extract_resource_path(
     """Returns path to resource as tuple with parent part (as package with dots) and resource name."""
     resource_path = PurePath(resource_path)
     if not resource_path.is_relative_to(PurePath('.')):
-        raise ValueError(f"Path has to be relative to current dir, "
-                         f"but '{resource_path}' is not")
+        raise ValueError(
+            f"Path has to be relative to current dir, "
+            f"but '{resource_path}' is not"
+        )
     if ".." in resource_path.parts:
-        raise ValueError(f"Path can't go backwards, "
-                         f"but '{resource_path}' does")
+        raise ValueError(
+            f"Path can't go backwards, but '{resource_path}' does"
+        )
     return ".".join(resource_path.parent.parts), resource_path.name
 
 
