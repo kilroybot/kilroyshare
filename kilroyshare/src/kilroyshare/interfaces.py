@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Hashable, TypeVar, Generic, Iterator, Tuple, Optional
+from typing import Generic, Hashable, Iterator, Optional, Tuple, TypeVar
 
 from kilroyshare.post import PostData
 
@@ -7,8 +7,7 @@ T = TypeVar('T', bound=Hashable)
 
 
 class KilroyFace(Generic[T], ABC):
-    """
-    KilroyFace base class.
+    """KilroyFace base class.
 
     Params:
         T (Hashable): Type of post id.
@@ -19,11 +18,10 @@ class KilroyFace(Generic[T], ABC):
             self,
             limit: Optional[int] = None
     ) -> Iterator[Tuple[T, PostData]]:
-        """
-        Scrap existing posts.
+        """Scraps existing posts.
 
         Args:
-            limit (int, optional): How many posts to scrap at maximum.
+            limit (Optional[int] = None): How many posts to scrap at maximum.
                 If None, scrap all existing posts. Defaults to None.
 
         Returns:
@@ -32,12 +30,8 @@ class KilroyFace(Generic[T], ABC):
         return NotImplemented
 
     @abstractmethod
-    def post(
-            self,
-            data: PostData
-    ) -> T:
-        """
-        Create new post with given data and get post id.
+    def post(self, data: PostData) -> T:
+        """Creates new post with given data and get post id.
 
         Args:
             data (PostData): Post's data.
@@ -48,12 +42,9 @@ class KilroyFace(Generic[T], ABC):
         return NotImplemented
 
     @abstractmethod
-    def score(
-            self,
-            post_id: T
-    ) -> float:
-        """
-        Get score of a post with given post_id.
+    def score(self, post_id: T) -> float:
+        """Gets score of a post with given post_id.
+
         The range for returned score values is not specified.
 
         Args:
