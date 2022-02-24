@@ -8,14 +8,14 @@ For more info about the package itself see `kilroyshare/README.md`.
 
 ## Continuous Integration
 
-When you push changes to remote, different Github Actions run to ensure project
+When you push changes to remote, different GitHub Actions run to ensure project
 consistency. There are defined workflows for:
 
 - drafting release notes
 - uploading releases to PyPI
 
 For more info see the files in `.github/workflows` directory and `Actions` tab
-on Github.
+on GitHub.
 
 ## Releases
 
