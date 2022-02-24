@@ -3,7 +3,7 @@ from typing import Generic, Hashable, Iterator, Optional, Tuple, TypeVar
 
 from kilroyshare.post import PostData
 
-T = TypeVar('T', bound=Hashable)
+T = TypeVar("T", bound=Hashable)
 
 
 class KilroyFace(Generic[T], ABC):
@@ -15,8 +15,7 @@ class KilroyFace(Generic[T], ABC):
 
     @abstractmethod
     def scrap(
-            self,
-            limit: Optional[int] = None
+        self, limit: Optional[int] = None
     ) -> Iterator[Tuple[T, PostData]]:
         """Scraps existing posts.
 
