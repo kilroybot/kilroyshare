@@ -1,1 +1,1 @@
-from importlib.resources import path
+from kilroyshare.face import Face
