@@ -34,7 +34,7 @@ class Face(Generic[K, V], ABC):
             AsyncIterator[Tuple[K, V]]: Async iterator of post identifier and
                 post data.
         """
-        pass
+        yield
 
     @abstractmethod
     async def post(self, data: V) -> K:
