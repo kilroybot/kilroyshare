@@ -1,5 +1,12 @@
 from abc import ABC, abstractmethod
-from typing import Generic, Hashable, Iterator, Optional, Tuple, TypeVar
+from typing import (
+    AsyncIterator,
+    Generic,
+    Hashable,
+    Optional,
+    Tuple,
+    TypeVar,
+)
 
 K = TypeVar("K", bound=Hashable)
 V = TypeVar("V")
@@ -16,7 +23,7 @@ class Face(Generic[K, V], ABC):
     @abstractmethod
     async def scrap(
         self, limit: Optional[int] = None
-    ) -> Iterator[Tuple[K, V]]:
+    ) -> AsyncIterator[Tuple[K, V]]:
         """Scraps existing posts.
 
         Args:
@@ -24,7 +31,8 @@ class Face(Generic[K, V], ABC):
                 If None, scrap all existing posts. Defaults to None.
 
         Returns:
-            Iterator[Tuple[K, V]]: Iterator of post identifier and post data.
+            AsyncIterator[Tuple[K, V]]: Async iterator of post identifier and
+                post data.
         """
         pass
 
