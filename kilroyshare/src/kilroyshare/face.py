@@ -14,7 +14,9 @@ class Face(Generic[K, V], ABC):
     """
 
     @abstractmethod
-    def scrap(self, limit: Optional[int] = None) -> Iterator[Tuple[K, V]]:
+    async def scrap(
+        self, limit: Optional[int] = None
+    ) -> Iterator[Tuple[K, V]]:
         """Scraps existing posts.
 
         Args:
@@ -27,7 +29,7 @@ class Face(Generic[K, V], ABC):
         pass
 
     @abstractmethod
-    def post(self, data: V) -> K:
+    async def post(self, data: V) -> K:
         """Creates new post with given data and get post identifier.
 
         Args:
@@ -39,7 +41,7 @@ class Face(Generic[K, V], ABC):
         pass
 
     @abstractmethod
-    def score(self, post_id: K) -> float:
+    async def score(self, post_id: K) -> float:
         """Gets score of a post with given post_id.
 
         The range for returned score values is not specified.
