@@ -1,5 +1,11 @@
 <h1 align="center">kilroyshare</h1>
 
+<div align="center">
+
+kilroy shared components 🖇️
+
+</div>
+
 ---
 
 This `README` provides info about the development process.
@@ -23,6 +29,7 @@ Every time you merge a pull request into main, a draft release is automatically
 updated, adding the pull request to changelog. Changes can be categorized by
 using labels. You can configure that in `.github/release-drafter.yml` file.
 
-Every time you publish a release, the package is uploaded to PyPI with version
-taken from release tag (ignoring the version in source code). You should store
-your PyPI token in `PYPI_TOKEN` secret.
+Every time you publish a release:
+
+- the package is uploaded to PyPI with version taken from release tag (you
+  should store your PyPI token in `PYPI_TOKEN` secret)

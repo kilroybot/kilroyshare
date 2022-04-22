@@ -1,12 +1,16 @@
+# this file is needed to install the package from git without support for subdirectories
+# see: https://github.com/python-poetry/poetry/issues/755
+
 [tool.poetry]
 name = "kilroyshare"
 version = "0.6.0"
 description = "kilroy shared components 🖇️"
-readme = "README.md"
+readme = "kilroyshare/README.md"
 authors = ["kilroy <kilroymail@pm.me>"]
 classifiers = ["License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent"]
 repository = "https://github.com/kilroybot/kilroyshare"
+packages = [{ include = "kilroyshare", from = "kilroyshare/src" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
