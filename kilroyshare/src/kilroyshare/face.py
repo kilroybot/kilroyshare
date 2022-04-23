@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
 from typing import (
+    AsyncIterator,
     Generic,
     Hashable,
     Iterator,
     Optional,
     Tuple,
     TypeVar,
+    Union,
 )
 
 K = TypeVar("K", bound=Hashable)
@@ -20,8 +22,14 @@ class Face(Generic[K, V], ABC):
         V: Type of post data.
     """
 
+    async def init(self) -> None:
+        """Async initialization. Empty by default."""
+        return
+
     @abstractmethod
-    def scrap(self, limit: Optional[int] = None) -> Iterator[Tuple[K, V]]:
+    async def scrap(
+        self, limit: Optional[int] = None
+    ) -> Union[Iterator[Tuple[K, V]], AsyncIterator[Tuple[K, V]]]:
         """Scraps existing posts.
 
         Args:
@@ -29,12 +37,14 @@ class Face(Generic[K, V], ABC):
                 If None, scrap all existing posts. Defaults to None.
 
         Returns:
-            Iterator[Tuple[K, V]]: Iterator of post identifier and post data.
+            Union[Iterator[Tuple[K, V]], AsyncIterator[Tuple[K, V]]]:
+                Either sync or async iterator (so generators count as well)
+                of post identifier and post data.
         """
         pass
 
     @abstractmethod
-    def post(self, data: V) -> K:
+    async def post(self, data: V) -> K:
         """Creates new post with given data and get post identifier.
 
         Args:
@@ -46,7 +56,7 @@ class Face(Generic[K, V], ABC):
         pass
 
     @abstractmethod
-    def score(self, post_id: K) -> float:
+    async def score(self, post_id: K) -> float:
         """Gets score of a post with given post_id.
 
         The range for returned score values is not specified.
