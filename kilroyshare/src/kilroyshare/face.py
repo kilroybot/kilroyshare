@@ -26,6 +26,10 @@ class Face(Generic[K, V], ABC):
         """Async initialization. Empty by default."""
         return
 
+    async def cleanup(self) -> None:
+        """Async cleanup. Empty by default."""
+        return
+
     @abstractmethod
     async def scrap(
         self, limit: Optional[int] = None
